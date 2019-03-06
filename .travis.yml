@@ -2,4 +2,4 @@ language: java
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
-app: calculation-server
+  app: calculation-server
