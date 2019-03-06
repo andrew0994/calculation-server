@@ -1,6 +1,7 @@
 package io.swagger.api;
 
 import io.swagger.model.CalculationRequest;
+import io.swagger.model.CalculationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-06T14:41:51.503Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-06T14:59:46.489Z")
 
 @Controller
 public class CalculationRequestApiController implements CalculationRequestApi {
@@ -37,18 +38,18 @@ public class CalculationRequestApiController implements CalculationRequestApi {
         this.request = request;
     }
 
-    public ResponseEntity<Object> findCalculationsByStatus(@ApiParam(value = "Status values that need to be considered for filter" ,required=true )  @Valid @RequestBody CalculationRequest body) {
+    public ResponseEntity<CalculationResponse> findCalculationsByStatus(@ApiParam(value = "Status values that need to be considered for filter" ,required=true )  @Valid @RequestBody CalculationRequest body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<Object>(objectMapper.readValue("\"{}\"", Object.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<CalculationResponse>(objectMapper.readValue("{  \"resultat\" : 0}", CalculationResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<CalculationResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<CalculationResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

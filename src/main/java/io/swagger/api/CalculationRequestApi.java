@@ -6,6 +6,7 @@
 package io.swagger.api;
 
 import io.swagger.model.CalculationRequest;
+import io.swagger.model.CalculationResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,18 +22,18 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-06T14:41:51.503Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-06T14:59:46.489Z")
 
 @Api(value = "calculationRequest", description = "the calculationRequest API")
 public interface CalculationRequestApi {
 
-    @ApiOperation(value = "Calculations Swagger", nickname = "findCalculationsByStatus", notes = "Calculate interest with montant, duree and taux", response = Object.class, tags={ "Calculation", })
+    @ApiOperation(value = "Calculations Swagger", nickname = "findCalculationsByStatus", notes = "Calculate interest with montant, duree and taux", response = CalculationResponse.class, tags={ "Calculation", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation", response = Object.class),
+        @ApiResponse(code = 200, message = "successful operation", response = CalculationResponse.class),
         @ApiResponse(code = 400, message = "Invalid status value") })
     @RequestMapping(value = "/calculationRequest",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Object> findCalculationsByStatus(@ApiParam(value = "Status values that need to be considered for filter" ,required=true )  @Valid @RequestBody CalculationRequest body);
+    ResponseEntity<CalculationResponse> findCalculationsByStatus(@ApiParam(value = "Status values that need to be considered for filter" ,required=true )  @Valid @RequestBody CalculationRequest body);
 
 }
