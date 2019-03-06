@@ -41,12 +41,20 @@ public class CalculationRequestApiController implements CalculationRequestApi {
     public ResponseEntity<CalculationResponse> findCalculationsByStatus(@ApiParam(value = "Status values that need to be considered for filter" ,required=true )  @Valid @RequestBody CalculationRequest body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<CalculationResponse>(objectMapper.readValue("{  \"instanmonth\" : 0,  \"totalcost\" : 6}", CalculationResponse.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<CalculationResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            CalculationResponse response = new CalculationResponse();
+			
+			Long instanmonth;
+			Long totalcost;
+			  
+			totalcost = body.getMontant() + body.getDuree()*body.getTaux() ;
+			instanmonth = totalcost / body.getDuree()*12;
+					
+			response.setInstanmonth(instanmonth);
+			
+			response.setTotalcost(totalcost);
+			
+			
+			return new ResponseEntity<CalculationResponse>(response, HttpStatus.NOT_IMPLEMENTED);
         }
 
         return new ResponseEntity<CalculationResponse>(HttpStatus.NOT_IMPLEMENTED);
