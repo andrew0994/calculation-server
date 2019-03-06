@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-06T14:59:46.489Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-03-06T15:09:42.678Z")
 
 @Controller
 public class CalculationRequestApiController implements CalculationRequestApi {
@@ -42,7 +42,7 @@ public class CalculationRequestApiController implements CalculationRequestApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<CalculationResponse>(objectMapper.readValue("{  \"resultat\" : 0}", CalculationResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<CalculationResponse>(objectMapper.readValue("{  \"instanmonth\" : 0,  \"totalcost\" : 6}", CalculationResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<CalculationResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
